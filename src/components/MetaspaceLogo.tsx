@@ -26,11 +26,11 @@ export default function MetaspaceLogo({ className = "h-8 w-8", size = 32, logoUr
             setCurrentLogo(data.logoUrl);
             setImgFailed(false);
           } else {
-            setCurrentLogo("/download.jpg");
+            setCurrentLogo("./download.jpg");
           }
         })
         .catch(() => {
-          setCurrentLogo("/download.jpg");
+          setCurrentLogo("./download.jpg");
         });
     }
   }, [logoUrl]);

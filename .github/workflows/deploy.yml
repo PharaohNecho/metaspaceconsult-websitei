@@ -55,3 +55,15 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      # 5. Upload the built static files to your Whogohost cPanel (Runs only when FTP Secrets are configured in GitHub Settings)
+      - name: FTP Deploy to cPanel
+        if: ${{ secrets.FTP_SERVER != '' && secrets.FTP_USERNAME != '' && secrets.FTP_PASSWORD != '' }}
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./dist/ # This deploys ONLY the built static output folder
+          server-dir: /public_html/ # Deploys directly to your cPanel's primary web folder
+
