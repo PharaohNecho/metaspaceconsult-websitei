@@ -1,6 +1,6 @@
 # Metaspace Consulting - Apache Configuration
-# Set the default index file priority to load React first
-DirectoryIndex index.html index.php index.htm
+# Set the default index file priority to load PHP first
+DirectoryIndex index.php index.html index.htm
 
 # Prevent directory browsing for security
 Options -Indexes
